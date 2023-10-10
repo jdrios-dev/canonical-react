@@ -9,7 +9,9 @@ Open your terminal and move the the folder where you would like to have the proj
 ### Clone the project
 
 With HTTPS `git clone https://github.com/jdrios-dev/canonical-react.git`
+
 or
+
 With SSH
 `git clone git@github.com:jdrios-dev/canonical-react.git`
 
