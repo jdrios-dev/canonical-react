@@ -37,10 +37,7 @@ const CardComponent = ({ item }) => {
           loading="lazy"
         />
         <a href={item?.link}>
-          <h3 className="focusable" aria-label={item?.title?.rendered}>
-            {" "}
-            {item?.title?.rendered}
-          </h3>
+          <h3>{item?.title?.rendered}</h3>
         </a>
 
         <div>
