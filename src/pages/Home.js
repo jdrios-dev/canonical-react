@@ -5,12 +5,16 @@ const Home = () => {
   const [items, setItems] = useState();
 
   const getData = async () => {
-    const res = await fetch(
-      "https://people.canonical.com/~anthonydillon/wp-json/wp/v2/posts.json"
-    );
-    const data = await res.json();
-    setItems(data);
-    return;
+    try {
+      const res = await fetch(
+        "https://people.canonical.com/~anthonydillon/wp-json/wp/v2/posts.json"
+      );
+      const data = await res.json();
+      setItems(data);
+      return;
+    } catch (error) {
+      console.error("API_CALL_ERROR:", error);
+    }
   };
 
   useEffect(() => {
@@ -20,7 +24,7 @@ const Home = () => {
   return (
     <div className="row--25-25-25-25  is-split-on-medium">
       {items?.map((item) => (
-        <CardComponent item={item} />
+        <CardComponent key={item?.id} item={item} />
       ))}
     </div>
   );

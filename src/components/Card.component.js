@@ -2,7 +2,10 @@ import React from "react";
 import format from "date-fns/format";
 
 const CardComponent = ({ item }) => {
-  console.log(item);
+  /**
+   * As we can not fetch the author data to display
+   * the name we could mock the logic here.
+   */
   const authorLink = item?._links?.author?.[0]?.href;
 
   return (
@@ -10,14 +13,14 @@ const CardComponent = ({ item }) => {
       className="p-card p-card-custom col u-equal-height"
       style={{
         borderRadius: "0.2rem",
-        boxShadow: "0px 0px 6px 3px rgba(0,0,0,0.08)",
+        boxShadow: "0px 0px 6px 1px rgba(0,0,0,0.08)",
         display: "flex",
         //  In case category change the color
         //  dinamically, we can set the color here
         borderTop: "3px solid #a87ca0",
       }}
     >
-      <div>Category: {item?.categories[0]}</div>
+      <div className="mb-8">CATEGORY {item?.categories[0]}</div>
 
       <div className="p-card__content dotted-top-border">
         {/**
@@ -27,13 +30,17 @@ const CardComponent = ({ item }) => {
          * title is too long like now.
          * Similar to the Ubuntu blog.
          */}
+        <img
+          className="p-card__image"
+          src={item?.featured_media}
+          alt={item?.title?.rendered}
+          loading="lazy"
+        />
         <a href={item?.link}>
-          <img
-            className="p-card__image"
-            src={item?.featured_media}
-            alt={item?.title?.rendered}
-          />
-          <h3> {item?.title?.rendered}</h3>
+          <h3 className="focusable" aria-label={item?.title?.rendered}>
+            {" "}
+            {item?.title?.rendered}
+          </h3>
         </a>
 
         <div>
